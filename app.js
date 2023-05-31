@@ -7,7 +7,7 @@ import mongoose from "mongoose";
 import config from "./core/config/config.dev"
 import connect from "./db/connect"
 import notes from "./routes/notes.route";
-
+import cors from "cors"
 const PORT = config.SERVER_PORT;
 
 connect();
@@ -15,6 +15,8 @@ connect();
 const app = express();
 
 app.set('view engine', 'ejs');
+
+app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
