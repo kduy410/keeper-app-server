@@ -15,7 +15,11 @@ NotesModel.addNote = (note) => {
     return note.save();
 }
 
-NotesModel.removeNote = (name) => {
+NotesModel.removeNoteById = (id) => {
+    return NotesModel.remove({id: id});
+}
+
+NotesModel.removeNoteByName = (name) => {
     return NotesModel.remove({title: name});
 }
 

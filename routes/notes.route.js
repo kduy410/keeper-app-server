@@ -10,8 +10,12 @@ router.post('/addnote', (req, res) => {
     noteController.addNote(req, res);
 });
 
-router.delete('/deletenote', (req, res) => {
-    noteController.deleteNote(req, res);
+router.delete('/deletebyname', (req, res) => {
+    noteController.deleteNoteByName(req, res);
+});
+
+router.delete('/deletebyid', (req, res) => {
+    noteController.deleteNoteById(req, res);
 });
 
 export default router;
