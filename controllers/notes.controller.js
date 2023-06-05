@@ -1,4 +1,4 @@
-import Note from "../models/note";
+import Note from "../models/note.js";
 
 const controller = {};
 
@@ -9,6 +9,7 @@ controller.getAll = async (req, res) => {
             console.log('getAll: ' + JSON.stringify(result))
             res.setHeader('Content-Type', 'application/json');
             res.send(result);
+            // res.status(200).json(result))
         })
         .catch(e => {
             console.log('Error in getting notes!');
@@ -52,16 +53,17 @@ controller.deleteNoteByName = async (req, res) => {
 }
 
 controller.deleteNoteById = async (req, res) => {
-    let id = req.body.id;
-    try {
-        const removedNote = await Note.removeNoteByName(id);
-        console.log('Deleted Note- ' + removedNote);
-        res.send('Note successfully deleted');
-    }
-    catch (err) {
-        console.log('Failed to delete Note- ' + err);
-        res.send('Delete failed..!');
-    }
+    Note.removeNoteById(req.params.id)
+        .then(result => {
+            console.log('delete: ' + req.params.id)
+            res.setHeader('Content-Type', 'application/json');
+            res.send(result);
+        })
+        .catch(e => {
+            console.log('Error in getting notes!');
+            console.log(e);
+            next(e);
+        })
 }
 
 export default controller;

@@ -16,11 +16,11 @@ NotesModel.addNote = (note) => {
 }
 
 NotesModel.removeNoteById = (id) => {
-    return NotesModel.remove({id: id});
+    return NotesModel.deleteOne({ _id: id }); // it is mongoose function deleteOne(), can't use mongodb function such as remove()
 }
 
 NotesModel.removeNoteByName = (name) => {
-    return NotesModel.remove({title: name});
+    return NotesModel.remove({ title: name });
 }
 
 export default NotesModel;

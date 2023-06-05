@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import config from '../core/config/config.dev'
+import config from '../core/config/config.dev.js'
 
 // Mongoose.Promise = global.Promise; //This is legacy code from older examples that isn't needed with Mongoose 5.
 
